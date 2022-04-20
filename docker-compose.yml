@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports: 
+      - '5432:5432'
+    volumes:
+      - finance-control-db:/var/lib/postgresql/data
+
+  finance-control:
+    build:
+      context: .
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+        
+volumes:
+  finance-control-db:
