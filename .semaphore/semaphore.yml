@@ -13,7 +13,7 @@ blocks:
             - checkout
             - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
             - 'docker pull "${DOCKER_USERNAME}/dockerizing-nodejs-finantial:latest" || true'
-            - 'docker build --cache-from "${DOCKER_USERNAME}/dockerizing-nodejs-finantial:latest" -t "${DOCKER_USERNAME}/dockerizing-nodejs-addressbook:latest" .'
+            - 'docker build --cache-from "${DOCKER_USERNAME}/dockerizing-nodejs-finantial:latest" -t "${DOCKER_USERNAME}/dockerizing-nodejs-finantial:latest" .'
             - 'docker push "${DOCKER_USERNAME}/dockerizing-nodejs-finantial:latest"'
       secrets:
         - name: dockerhub
